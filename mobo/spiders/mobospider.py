@@ -1,25 +1,23 @@
 import scrapy
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
-
 from mobo.items import MoboItem
+from scrapy.pipelines.images import ImagesPipeline
 
 
 class MobospiderSpider(CrawlSpider):
     name = 'mobospider'
-    allowed_domains = ['www.mo-bo.com.tw']
+    allowed_domains = ['pantsevent.mo-bo.com.tw']
 
-    # 進入某一檔「顯瘦這樣穿．均一價$590」
-    start_urls = ['https://www.mo-bo.com.tw/PDSale.asp?pi=09990727']
+    # 「穿搭gallery」
+    start_urls = ['http://pantsevent.mo-bo.com.tw/gallery/new']
 
-    # 抓「裡面的商品」、以及「該商品的搭配」
+    # 抓「第一頁」的所有範本
     rules = (
-        Rule(LinkExtractor(allow=r'https://www.mo-bo.com.tw/PDContent'), callback='parse_item', follow=False),
+        Rule(LinkExtractor(allow=r'http://pantsevent.mo-bo.com.tw/info'), callback='parse_item', follow=False),
     )
 
     def parse_item(self, response):
         item = MoboItem()
-        item['image_urls'] = response.xpath('.//div/a/img/@src').extract()
-        print('\n\n\n',response.url, '-----------------------------------')
-
-        return item
+        item['image_urls'] = response.xpath('.//div[@class="pic"]/img/@src').extract()
+        yield item
