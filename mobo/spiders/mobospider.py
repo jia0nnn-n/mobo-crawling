@@ -7,12 +7,12 @@ class MobospiderSpider(CrawlSpider):
     name = 'mobospider'
     allowed_domains = ['www.mo-bo.com.tw']
 
-    # 進入點
-    start_urls = ['http://www.mo-bo.com.tw/']
+    # 進入某一檔「兩件五折」
+    start_urls = ['https://www.mo-bo.com.tw/PDSale.asp?pi=09990707']
 
-    # 抓「特價」相關的頁面
+    # 抓「裡面的商品」、以及「該商品的搭配」
     rules = (
-        Rule(LinkExtractor(allow=r'https://www.mo-bo.com.tw/PDSale'), callback='parse_item', follow=True),
+        Rule(LinkExtractor(allow=r'https://www.mo-bo.com.tw/PDContent'), callback='parse_item', follow=True),
     )
 
     def parse_item(self, response):
