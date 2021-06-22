@@ -10,9 +10,14 @@ Use Python scrapy to fetch the clothes images, including sales an everyone's dre
 
 
 ## Entry Commands
-```py
+```bash
 scrapy startproject [project] [domain]
 
 # create a spider
 scrapy genspider -t crawl [customized_spider_name] [domain]
+```
+
+## Start
+```bash
+scrapy crawl [customized_spider_name]
 ```
