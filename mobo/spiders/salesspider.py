@@ -19,5 +19,5 @@ class MobospiderSpider(CrawlSpider):
 
     def parse_item(self, response):
         item = MoboItem()
-        item['image_urls'] = response.xpath('.//div[@class="pic"]/img/@src').extract()
+        item['image_urls'] = response.xpath('.//img[@class="imgColor"]/@src').extract()
         yield item
