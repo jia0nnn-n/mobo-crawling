@@ -1,6 +1,6 @@
 ## Goal
 
-Use pytho scrapy to fetch the clothes images, including sales an everyone's dressing snapshots
+Use Python scrapy to fetch the clothes images, including sales an everyone's dressing snapshots
 
 
 ## Keywords
