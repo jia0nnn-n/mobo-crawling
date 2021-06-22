@@ -106,5 +106,5 @@ class MoboDownloaderMiddleware:
 
 class ProxyIPDownloaderMiddleware(object):
     def process_request(self, request, spider):
-        request.meta["proxy"] = 'http://' + '80.82.55.71:80'
-        # pass
+        # request.meta["proxy"] = 'http://' + '80.82.55.71:80'
+        pass
