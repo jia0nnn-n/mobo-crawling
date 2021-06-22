@@ -6,6 +6,8 @@
 #     https://docs.scrapy.org/en/latest/topics/settings.html
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+import scrapy.pipelines.images
+from PIL import Image
 
 BOT_NAME = 'mobo'
 
@@ -52,7 +54,7 @@ ROBOTSTXT_OBEY = True
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
    # 'mobo.middlewares.MoboDownloaderMiddleware': 543,'
-    'mobo.middlewares.ProxyIPDownloaderMiddleware': 0,
+    'mobo.middlewares.ProxyIPDownloaderMiddleware': 23,
 }
 
 # Enable or disable extensions
@@ -64,8 +66,10 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'mobo.middlewares.ProxyIPDownloaderMiddleware': 543,
+    scrapy.pipelines.images.ImagesPipeline: 300
 }
+
+IMAGES_STORE = 'imgs'
 
 
 # Enable and configure the AutoThrottle extension (disabled by default)
