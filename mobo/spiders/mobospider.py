@@ -6,7 +6,7 @@ from scrapy.pipelines.images import ImagesPipeline
 
 
 class MobospiderSpider(CrawlSpider):
-    name = 'mobospider'
+    name = 'mobo-template'
     allowed_domains = ['pantsevent.mo-bo.com.tw']
 
     # 「穿搭gallery」
